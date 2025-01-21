@@ -1,97 +1,95 @@
 package config
 
-
 import (
+	"fmt"
 
-   "fmt"
+	"time"
 
-   "time"
+	"example.com/sa-67-example/entity"
 
-   "example.com/sa-67-example/entity"
+	"gorm.io/driver/sqlite"
 
-   "gorm.io/driver/sqlite"
-
-   "gorm.io/gorm"
-
+	"gorm.io/gorm"
 )
-
 
 var db *gorm.DB
 
-
 func DB() *gorm.DB {
 
-   return db
+	return db
 
 }
-
 
 func ConnectionDB() {
 
-   database, err := gorm.Open(sqlite.Open("sa.db?cache=shared"), &gorm.Config{})
+	database, err := gorm.Open(sqlite.Open("sa.db?cache=shared"), &gorm.Config{})
 
-   if err != nil {
+	if err != nil {
 
-       panic("failed to connect database")
+		panic("failed to connect database")
 
-   }
+	}
 
-   fmt.Println("connected database")
+	fmt.Println("connected database")
 
-   db = database
+	db = database
 
 }
 
-
 func SetupDatabase() {
 
+	db.AutoMigrate(
 
-   db.AutoMigrate(
+		&entity.Users{},
 
-       &entity.Users{},
+		&entity.Genders{},
 
-       &entity.Genders{},
+		&entity.Ciper{},
 
-   )
+		&entity.Answer{},
+	)
 
+	Ciper := &entity.Ciper{
+		Name:        "Vigenère Cipher",
+		Description: "A technique based on a series of Caesar ciphers.",
+		Type:        "Symmetric",
+		Difficulty:  "Medium",
+		Ciper:       "003",
+	}
+	db.Create(Ciper)
 
-   GenderMale := entity.Genders{Gender: "Male"}
+	GenderMale := entity.Genders{Gender: "Male"}
 
-   GenderFemale := entity.Genders{Gender: "Female"}
+	GenderFemale := entity.Genders{Gender: "Female"}
 
+	db.FirstOrCreate(&GenderMale, &entity.Genders{Gender: "Male"})
 
-   db.FirstOrCreate(&GenderMale, &entity.Genders{Gender: "Male"})
+	db.FirstOrCreate(&GenderFemale, &entity.Genders{Gender: "Female"})
 
-   db.FirstOrCreate(&GenderFemale, &entity.Genders{Gender: "Female"})
+	hashedPassword, _ := HashPassword("123456")
 
+	BirthDay, _ := time.Parse("2006-01-02", "1988-11-12")
 
-   hashedPassword, _ := HashPassword("123456")
+	User := &entity.Users{
 
-   BirthDay, _ := time.Parse("2006-01-02", "1988-11-12")
+		FirstName: "Software",
 
-   User := &entity.Users{
+		LastName: "Analysis",
 
-       FirstName: "Software",
+		Email: "sa@gmail.com",
 
-       LastName:  "Analysis",
+		Age: 80,
 
-       Email:     "sa@gmail.com",
+		Password: hashedPassword,
 
-       Age:       80,
+		BirthDay: BirthDay,
 
-       Password:  hashedPassword,
+		GenderID: 1,
+	}
 
-       BirthDay:  BirthDay,
+	db.FirstOrCreate(User, &entity.Users{
 
-       GenderID:  1,
-
-   }
-
-   db.FirstOrCreate(User, &entity.Users{
-
-       Email: "sa@gmail.com",
-
-   })
-
+		Email: "sa@gmail.com",
+	})
 
 }

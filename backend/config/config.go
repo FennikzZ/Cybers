@@ -15,11 +15,7 @@ func HashPassword(password string) (string, error) {
 
 
 // checkPasswordHash เป็น function สำหรับ check password ที่ hash แล้ว ว่าตรงกันหรือไม่
-
 func CheckPasswordHash(password, hash []byte) bool {
-
    err := bcrypt.CompareHashAndPassword(hash, password)
-
    return err == nil
-
 }

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { SignIn } from "../../../services/https";
 
-import { SignInInterface } from "../../../interfaces/SignIn";
+import { SignInInterface } from "../../../interfaces/Signln";
 
 import logo from "../../../assets/logo.png";
 
@@ -37,7 +37,7 @@ function SignInPages() {
 
       setTimeout(() => {
 
-        location.href = "/";
+        location.href = "/ciper";
 
       }, 2000);
 

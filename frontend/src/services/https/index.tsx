@@ -1,6 +1,6 @@
 import { UsersInterface } from "../../interfaces/IUser";
-
-import { SignInInterface } from "../../interfaces/SignIn";
+import { AnswerInterface } from "../../interfaces/IAnswer";
+import { SignInInterface } from "../../interfaces/Signln";
 
 import axios from "axios";
 
@@ -114,6 +114,29 @@ async function CreateUser(data: UsersInterface) {
 
 }
 
+async function CreateAnswer(data: AnswerInterface) {
+
+  return await axios
+
+    .post(`${apiUrl}/ciper`, data, requestOptions)
+
+    .then((res) => res)
+
+    .catch((e) => e.response);
+
+}
+
+async function GetCiper() {
+
+  return await axios
+
+    .get(`${apiUrl}/ciper`, requestOptions)
+
+    .then((res) => res)
+
+    .catch((e) => e.response);
+
+}
 
 export {
 
@@ -131,4 +154,7 @@ export {
 
   CreateUser,
 
+  CreateAnswer,
+
+  GetCiper,
 };
