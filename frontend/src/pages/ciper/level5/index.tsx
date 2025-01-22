@@ -13,7 +13,7 @@ import {
 import { PlusOutlined, BulbOutlined } from "@ant-design/icons";
 import { AnswerInterface } from "../../../interfaces/IAnswer";
 import { CreateAnswer } from "../../../services/https";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import photo2 from "../../../assets/DDD.png";
 
@@ -45,7 +45,7 @@ function CiperCreate5() {
                 content: "จบเกมแล้ว",
             });
             setTimeout(() => {
-                navigate("/");
+                navigate("/ciper");
             }, 2000);
         } else {
             messageApi.open({
@@ -79,18 +79,30 @@ function CiperCreate5() {
         setIsSecondAnswerCorrect(isCorrect);
 
         if (isCorrect) {
-            console.log(`KEY = https://www.youtube.com/watch?v=nHPp18V4S1s`);
+            console.log(`กุญแจอยู่ในนี้รึเปล่าน้า https://www.youtube.com/watch?v=nHPp18V4S1s`);
         }
     };
 
     return (
-<div style={{ backgroundColor: "#C5D6BA", minHeight: "100vh", padding: "20px", color: "black" }}>
-  {contextHolder}
-  <Card style={{ backgroundColor: "#C5D6BA", color: "black" }}>
-    <h2>LEVEL 5!</h2>
-    <Divider style={{ borderColor: "black" }} />
+        <div
+            style={{
+                backgroundColor: "#0D1117",
+                minHeight: "100vh",
+                padding: "20px",
+                color: "#FFFFFF",
+            }}
+        >
+            {contextHolder}
+            <Card
+                style={{
+                    backgroundColor: "#0D1117",
+                    color: "#FFFFFF",
+                }}
+            >
+                <h2 style={{ color: "#FFFFFF" }}>LEVEL 5!</h2>
+                <Divider style={{ borderColor: "#FFFFFF" }} />
                 <p>ลองดูในรูปภาพข้างในลึกๆดูสิ</p>
-                <Row align="middle" gutter={[16, 16]}>
+                <Row align="middle" gutter={[74, 16]}>
                     <Col>
                         <img
                             src={photo2}
@@ -100,26 +112,25 @@ function CiperCreate5() {
                     </Col>
                     <Col>
                         <Button
-                            // type="primary"
                             icon={<PlusOutlined />}
                             onClick={toggleHint1}
+                            style={{ backgroundColor: "#00FF7F", borderColor: "black" }}
                         >
                             Hint1
                         </Button>
                         <Button
-                            // type="primary"
                             icon={<BulbOutlined />}
                             onClick={toggleHint2}
-                            style={{ marginLeft: "8px" }}
+                            style={{ marginLeft: "8px",backgroundColor: "#00FF7F", borderColor: "black" }}
                         >
-                            Answer
+                            Answer1
                         </Button>
                     </Col>
                 </Row>
                 {showHint1 && (
                     <Row>
                         <Col>
-                            <p style={{ marginTop: "10px", color: "blue" }}>
+                            <p style={{ marginTop: "10px", color: "white" }}>
                                 Steganography
                             </p>
                         </Col>
@@ -128,7 +139,7 @@ function CiperCreate5() {
                 {showHint2 && (
                     <Row>
                         <Col>
-                            <p style={{ marginTop: "10px", color: "green" }}>
+                            <p style={{ marginTop: "10px", color: "#00FF7F" }}>
                                 แปลงไฟล์แล้วจะได้
                             </p>
                         </Col>
@@ -143,12 +154,12 @@ function CiperCreate5() {
                 >
                     <Row gutter={[16, 0]} align="middle">
                         <Col xs={24} sm={24} md={12}>
-                            <Form.Item label="เรียนแคลอันแรกห้องโครตกว้างเลย">
-                                <Input onChange={onSecondAnswerChange} />
+                            <Form.Item label="เรียนแคลอันแรกห้องโครตกว้างเลย (เมื่อเจอคำตอบแล้วลองดูที่เครื่องเล่นเกมอีกรอบสิ)">
+                                <Input onChange={onSecondAnswerChange} style={{ backgroundColor: "#1E1E1E", color: "#00FF7F" }} />
                                 {isSecondAnswerCorrect && (
                                     <Checkbox
                                         checked
-                                        style={{ marginTop: "8px", color: "green" }}
+                                        style={{ marginTop: "8px", color: "#00FF7F" }}
                                     >
                                         Correct!
                                     </Checkbox>
@@ -158,24 +169,24 @@ function CiperCreate5() {
                         <Col xs="auto">
                             <Space>
                                 <Button
-                                    // type="primary"
                                     icon={<PlusOutlined />}
                                     onClick={toggleHint3}
+                                    style={{ backgroundColor: "#00FF7F", borderColor: "black" }}
                                 >
                                     Hint2
                                 </Button>
                                 {showHint3 && (
-                                    <span style={{ color: "blue", marginLeft: "8px" }}>1500</span>
+                                    <span style={{ color: "white", marginLeft: "8px" }}>1500</span>
                                 )}
                                 <Button
-                                    // type="primary"
                                     icon={<BulbOutlined />}
                                     onClick={toggleHint4}
+                                    style={{ backgroundColor: "#00FF7F", borderColor: "black" }}
                                 >
-                                    Answer
+                                    Answer2
                                 </Button>
                                 {showHint4 && (
-                                    <span style={{ color: "green", marginLeft: "8px" }}>B4101</span>
+                                    <span style={{ color: "#00FF7F", marginLeft: "8px" }}>B4101</span>
                                 )}
                             </Space>
                         </Col>
@@ -184,37 +195,36 @@ function CiperCreate5() {
                         <Col xs={24} sm={24} md={12}>
                             <Row justify="center">
                                 <Col span={24}>
-                                    <Form.Item
-                                        label="Answer"
-                                        name="Answer"
-                                        rules={[{ required: true, message: "Please enter the answer!" }]}
-                                    >
-                                        <Input />
-                                    </Form.Item>
+                                <Form.Item
+  label={<span style={{ color: '#FFFFFF' }}>Answer</span>}
+  name="Answer"
+  rules={[{ required: true, message: "Please enter the answer!" }]}>
+  <Input style={{ backgroundColor: "#1E1E1E", color: "#00FF7F" }} />
+</Form.Item>
                                 </Col>
                             </Row>
                         </Col>
                         <Col>
                             <Space>
                                 <Button
-                                    // type="primary"
                                     icon={<PlusOutlined />}
                                     onClick={toggleHint5}
+                                    style={{ backgroundColor: "#00FF7F", borderColor: "black" }}
                                 >
                                     Hint3
                                 </Button>
                                 {showHint5 && (
-                                    <span style={{ color: "blue", marginLeft: "8px" }}>ดาว TIKTOK มทส. ไม่ใช่คน</span>
+                                    <span style={{ color: "white", marginLeft: "8px" }}>ดาว TIKTOK มทส. ไม่ใช่คน</span>
                                 )}
                                 <Button
-                                    // type="primary"
                                     icon={<BulbOutlined />}
                                     onClick={toggleHint6}
+                                    style={{ backgroundColor: "#00FF7F", borderColor: "black" }}
                                 >
-                                    Answer
+                                    Answer3
                                 </Button>
                                 {showHint6 && (
-                                    <span style={{ color: "green", marginLeft: "8px" }}>DOG</span>
+                                    <span style={{ color: "#00FF7F", marginLeft: "8px" }}>DOG</span>
                                 )}
                             </Space>
                         </Col>
@@ -228,6 +238,7 @@ function CiperCreate5() {
                                         type="primary"
                                         htmlType="submit"
                                         icon={<PlusOutlined />}
+                                        style={{ backgroundColor: "#00AA55", borderColor: "#00FF7F" }}
                                     >
                                         Submit
                                     </Button>

@@ -20,7 +20,7 @@ import {
 } from "@ant-design/icons";
 import { AnswerInterface } from "../../../interfaces/IAnswer";
 import { CreateAnswer } from "../../../services/https";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function CiperCreate1() {
   const navigate = useNavigate();
@@ -114,13 +114,19 @@ function CiperCreate1() {
   ];
 
   return (
-<div style={{ backgroundColor: "#C5D6BA", minHeight: "100vh", padding: "20px", color: "white" }}>
-  {contextHolder}
-  <Card style={{ backgroundColor: "#C5D6BA", color: "black" }}>
-    <h2>LEVEL 1!</h2>
-    <Divider style={{ borderColor: "white" }} />
-        <Divider />
-
+    <div
+      style={{
+        backgroundColor: "#0D1117", // สีดำเข้มสำหรับพื้นหลัง
+        minHeight: "100vh",
+        padding: "20px",
+        color: "white", // สีข้อความขาว
+        fontFamily: "'Press Start 2P', cursive", // ฟอนต์สไตล์เกม
+      }}
+    >
+      {contextHolder}
+      <Card style={{ backgroundColor: "#0D1117", color: "white" }}>
+        <h2>LEVEL 1! Hash Function</h2>
+        <Divider style={{ borderColor: "white" }} />
         <Form
           name="basic"
           layout="vertical"
@@ -131,7 +137,7 @@ function CiperCreate1() {
             <Row key={index} gutter={[16, 0]} align="middle">
               <Col xs={24} sm={24} md={12}>
                 <Form.Item
-                  label={question.label}
+                  label={<span style={{ color: 'white' }}>ก่อนหน้านี้รู้สึกร้อนมากจนหายใจไม่ออก แต่ตอนนี้เย็นขึ้นแล้วหายใจสะดวก</span>}
                   name={`Question${index + 1}`}
                   rules={[
                     {
@@ -144,7 +150,12 @@ function CiperCreate1() {
                     maxLength={question.maxLength}
                     onChange={handleInputChange(index, question.answer)}
                     placeholder={question.placeholder}
-                    style={{ textTransform: "uppercase", letterSpacing: "10px" }}
+                    style={{
+                      textTransform: "uppercase",
+                      letterSpacing: "10px",
+                      backgroundColor: "#1E1E1E",
+                      color: "#00FF7F",
+                    }}
                   />
                 </Form.Item>
               </Col>
@@ -161,8 +172,9 @@ function CiperCreate1() {
                   type="text"
                   icon={<PlusOutlined />}
                   onClick={() => toggleHint(index)}
+                  style={{ color: "#00FF7F" }}
                 >
-                  Hint1 <span style={{ color: "blue" }}>{showHints[index] && "ROOM"}</span>
+                  Hint1 <span style={{ color: "white" }}>{showHints[index] && "ROOM"}</span>
                 </Button>
               </Col>
               <Col>
@@ -170,6 +182,7 @@ function CiperCreate1() {
                   type="text"
                   icon={<BulbOutlined />}
                   onClick={() => toggleAnswer(index)}
+                  style={{ color: "#00FF7F" }}
                 >
                   Answer1{" "}
                   <span
@@ -182,7 +195,7 @@ function CiperCreate1() {
                   <Button
                     type="link"
                     icon={<CopyOutlined />}
-                    style={{ color: "blue" }}  // Set color style for the Copy button
+                    style={{ color: "white" }}  // Set color style for the Copy button
                     onClick={() => copyToClipboard(question.answer)}
                   >
                     Copy
@@ -195,7 +208,7 @@ function CiperCreate1() {
           <Row gutter={[16, 0]}>
             <Col xs={24} sm={24} md={12}>
               <Form.Item
-                label="Answer"
+                label={<span style={{ color: 'white' }}>Answer</span>}
                 name="Answer"
                 initialValue={inputAnswer}
                 rules={[{ required: true, message: "Please enter the answer!" }]}
@@ -203,6 +216,7 @@ function CiperCreate1() {
                 <Input
                   value={inputAnswer}
                   onChange={(e) => setInputAnswer(e.target.value)}
+                  style={{ backgroundColor: "#1E1E1E", color: "#00FF7F" }}
                 />
               </Form.Item>
             </Col>
@@ -212,8 +226,9 @@ function CiperCreate1() {
               type="text"
               icon={<PlusOutlined />}
               onClick={() => setShowDetail(!showDetail)}
+              style={{ color: "#00FF7F" }}
             >
-              Hint2 <span style={{ color: "red" }}>{showDetail && "SHA256"}</span>
+              Hint2 <span style={{ color: "white" }}>{showDetail && "SHA256"}</span>
             </Button>
             <Button
               type="text"
@@ -225,9 +240,10 @@ function CiperCreate1() {
                   return updated;
                 })
               }
+              style={{ color: "#00FF7F" }}
             >
               Answer2{" "}
-              <span style={{ color: showAnswers[1] ? "green" : "black" }}>
+              <span style={{ color: showAnswers[1] ? "#00FF7F" : "#00FF7F" }}>
                 {showAnswers[1] &&
                   "92baa89ecf024092e9e6372d33a6548bd6c3ccca812f278db3fcdb5c8641ec65"}
               </span>
@@ -236,7 +252,7 @@ function CiperCreate1() {
               <Button
                 type="link"
                 icon={<CopyOutlined />}
-                style={{ color: "blue" }}  // Set color style for the Copy button
+                style={{ color: "white" }}  // Set color style for the Copy button
                 onClick={() =>
                   copyToClipboard(
                     "92baa89ecf024092e9e6372d33a6548bd6c3ccca812f278db3fcdb5c8641ec65"
@@ -256,6 +272,7 @@ function CiperCreate1() {
                     type="primary"
                     htmlType="submit"
                     icon={<PlusOutlined />}
+                    style={{ backgroundColor: "#00AA55", borderColor: "#00FF7F" }}
                   >
                     Submit
                   </Button>

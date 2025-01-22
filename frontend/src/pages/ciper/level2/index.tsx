@@ -22,7 +22,7 @@ import { AnswerInterface } from "../../../interfaces/IAnswer";
 import { CreateAnswer } from "../../../services/https";
 import { useNavigate, Link } from "react-router-dom";
 
-function CiperCreate1() {
+function CiperCreate2() {
   const navigate = useNavigate();
   const [messageApi, contextHolder] = message.useMessage();
   const [correctStates, setCorrectStates] = useState<(boolean | null)[]>(Array(5).fill(null));
@@ -107,26 +107,34 @@ function CiperCreate1() {
     {
       label:
         "KEY = MICRO OS SE",
-        answer: "F11",
-        maxLength: 9,
-        placeholder: "_ _ _",
+      answer: "F11",
+      maxLength: 9,
+      placeholder: "_ _ _",
     },
   ];
-
+  
   return (
-<div style={{ backgroundColor: "#C5D6BA", minHeight: "100vh", padding: "20px", color: "black" }}>
-  {contextHolder}
-  <Card style={{ backgroundColor: "#C5D6BA", color: "black" }}>
-    <h2>LEVEL 2!</h2>
-    <Divider style={{ borderColor: "black" }} />
+    <div
+      style={{
+        backgroundColor: "#0D1117", // สีดำเข้มสำหรับพื้นหลัง
+        minHeight: "100vh",
+        padding: "20px",
+        color: "white", // สีข้อความขาว
+        fontFamily: "'Press Start 2P', cursive", // ฟอนต์สไตล์เกม
+      }}
+    >
+      {contextHolder}
+      <Card style={{ backgroundColor: "#0D1117", color: "white" }}>
+        <h2>LEVEL 2! Symmetric Key</h2>
+        <Divider style={{ borderColor: "white" }} />
         <p>
-          ไฟล์ไหนถามใจเธอดูว{" "}
+          ฉันอยากเข้าห้องนี้จัง {" "}
           <a
             href="https://drive.google.com/file/d/1L4dHjMMk3_n5SiBMHlRcpsayuncVvOmL/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
           >
-            FILE
+            ห้องถูกล็อคอยู่
           </a>
         </p>
           
@@ -140,7 +148,7 @@ function CiperCreate1() {
             <Row key={index} gutter={[16, 0]} align="middle">
               <Col xs={24} sm={24} md={12}>
                 <Form.Item
-                  label={question.label}
+                  label={<span style={{ color: 'white' }}>{question.label}</span>}
                   name={`Question${index + 1}`}
                   rules={[
                     {
@@ -153,7 +161,12 @@ function CiperCreate1() {
                     maxLength={question.maxLength}
                     onChange={handleInputChange(index, question.answer)}
                     placeholder={question.placeholder}
-                    style={{ textTransform: "uppercase", letterSpacing: "10px" }}
+                    style={{
+                      textTransform: "uppercase",
+                      letterSpacing: "10px",
+                      backgroundColor: "#1E1E1E",
+                      color: "#00FF7F",
+                    }}
                   />
                 </Form.Item>
               </Col>
@@ -170,8 +183,9 @@ function CiperCreate1() {
                   type="text"
                   icon={<PlusOutlined />}
                   onClick={() => toggleHint(index)}
+                  style={{ color: "#00FF7F" }}
                 >
-                  Hint1 <span style={{ color: "blue" }}>{showHints[index] && "เป็นสถานที่"}</span>
+                  Hint1 <span style={{ color: "white" }}>{showHints[index] && "เราจะไปที่นี่เมื่อทำแลป"}</span>
                 </Button>
               </Col>
               <Col>
@@ -179,6 +193,7 @@ function CiperCreate1() {
                   type="text"
                   icon={<BulbOutlined />}
                   onClick={() => toggleAnswer(index)}
+                  style={{ color: "#00FF7F" }}
                 >
                   Answer1{" "}
                   <span
@@ -191,7 +206,7 @@ function CiperCreate1() {
                   <Button
                     type="link"
                     icon={<CopyOutlined />}
-                    style={{ color: "blue" }}  // Set color style for the Copy button
+                    style={{ color: "white" }}
                     onClick={() => copyToClipboard(question.answer)}
                   >
                     Copy
@@ -200,11 +215,11 @@ function CiperCreate1() {
               </Col>
             </Row>
           ))}
-
+  
           <Row gutter={[16, 0]}>
             <Col xs={24} sm={24} md={12}>
               <Form.Item
-                label="Answer"
+                label={<span style={{ color: 'white' }}>Answer</span>}
                 name="Answer"
                 initialValue={inputAnswer}
                 rules={[{ required: true, message: "Please enter the answer!" }]}
@@ -212,6 +227,7 @@ function CiperCreate1() {
                 <Input
                   value={inputAnswer}
                   onChange={(e) => setInputAnswer(e.target.value)}
+                  style={{ backgroundColor: "#1E1E1E", color: "#00FF7F" }}
                 />
               </Form.Item>
             </Col>
@@ -221,8 +237,9 @@ function CiperCreate1() {
               type="text"
               icon={<PlusOutlined />}
               onClick={() => setShowDetail(!showDetail)}
+              style={{ color: "#00FF7F" }}
             >
-              Hint2 <span style={{ color: "red" }}>{showDetail && "เราสามารถออกกำลังกาย พายเรือได้"}</span>
+              Hint2 <span style={{ color: "white" }}>{showDetail && "เราสามารถออกกำลังกาย พายเรือได้"}</span>
             </Button>
             <Button
               type="text"
@@ -234,9 +251,10 @@ function CiperCreate1() {
                   return updated;
                 })
               }
+              style={{ color: "#00FF7F" }}
             >
               Answer2{" "}
-              <span style={{ color: showAnswers[1] ? "green" : "black" }}>
+              <span style={{ color: showAnswers[1] ? "green" : "white" }}>
                 {showAnswers[1] &&
                   "SASAMSEAN"}
               </span>
@@ -245,7 +263,7 @@ function CiperCreate1() {
               <Button
                 type="link"
                 icon={<CopyOutlined />}
-                style={{ color: "blue" }}  // Set color style for the Copy button
+                style={{ color: "white" }}
                 onClick={() =>
                   copyToClipboard(
                     "SASAMSEAN"
@@ -256,16 +274,16 @@ function CiperCreate1() {
               </Button>
             )}
           </Col>
-
+  
           <Row justify="end">
             <Col style={{ marginTop: "40px" }}>
               <Form.Item>
                 <Space>
-
                   <Button
                     type="primary"
                     htmlType="submit"
                     icon={<PlusOutlined />}
+                    style={{ backgroundColor: "#00AA55", borderColor: "#00FF7F" }}
                   >
                     Submit
                   </Button>
@@ -279,4 +297,4 @@ function CiperCreate1() {
   );
 }
 
-export default CiperCreate1;
+export default CiperCreate2;

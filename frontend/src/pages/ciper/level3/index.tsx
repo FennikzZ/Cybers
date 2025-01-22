@@ -8,18 +8,16 @@ import {
     Input,
     Card,
     message,
-
 } from "antd";
-import { PlusOutlined, InfoCircleOutlined, BulbOutlined } from "@ant-design/icons";
+import { PlusOutlined, InfoCircleOutlined, BulbOutlined, CopyOutlined } from "@ant-design/icons";
 import { AnswerInterface } from "../../../interfaces/IAnswer";
 import { CreateAnswer } from "../../../services/https";
-import { useNavigate, Link } from "react-router-dom";
-import photo1 from "../../../assets/1.jpeg";
+import { useNavigate } from "react-router-dom";
 import Cat from "../../../assets/cat.jpg";
+import photo1 from "../../../assets/1.jpeg";
 import { useState } from "react";
-import { CopyOutlined } from "@ant-design/icons";
 
-function CiperCreate2() {
+function CiperCreate3() {
     const navigate = useNavigate();
     const [messageApi, contextHolder] = message.useMessage();
     const [showDetail, setShowDetail] = useState(false);
@@ -58,28 +56,29 @@ function CiperCreate2() {
     };
 
     return (
-<div style={{ backgroundColor: "#C5D6BA", minHeight: "100vh", padding: "20px", color: "black" }}>
-  {contextHolder}
-  <Card style={{ backgroundColor: "#C5D6BA", color: "black" }}>
-    <h2>LEVEL 3!</h2>
-    <Divider style={{ borderColor: "black" }} />
+        <div style={{ backgroundColor: "#0D1117", minHeight: "100vh", padding: "20px", color: "black" }}>
+            {contextHolder}
+            <Card style={{ backgroundColor: "#0D1117", color: "white" }}>
+                <h2 style={{ color: "white" }}>LEVEL 3! Symmetric Key</h2>
+                <Divider style={{ borderColor: "white" }} />
 
                 <p>
                     <img src={Cat} alt="Level 2" style={{ width: "30%", height: "auto" }} />
                 </p>
-                <p>
+                <p style={{ color: "white" }}>
                     เอ๊ะ! ทำไมนี่ฉันถูกสาปให้พูดให้เป็นตัวเลขทุกครั้ง
                 </p>
                 <img src={photo1} alt="Level 2" style={{ width: "30%", height: "auto" }} />
 
-                <p>
-                    ไฟล์เอกสารลับทางรายการ{" "}
+                <p style={{ color: "white" }}>
+                    ทำไมกล่องนี้ถึงเปิดไม่ได้นะอ้อมีกุญแจล็อคอยู่{" "}
                     <a
-                        href="https://drive.google.com/file/d/1Nvt72O7myNjWwDV8Xh2xh9Avi2MEsCTC/view?usp=sharing"
+                        href="https://drive.google.com/file/d/1YeX_pxqqTmbVCkU2qKylaC6ebWfo1Ebu/view?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
+                        style={{ color: "#00FF7F" }}
                     >
-                        ล็อค !
+                         (🔐)
                     </a>
                 </p>
 
@@ -92,30 +91,32 @@ function CiperCreate2() {
                     <Row gutter={[16, 0]}>
                         <Col xs={24} sm={24} md={12}>
                             <Form.Item
-                                label="Answer"
+                                label={<span style={{ color: 'white' }}>Answer</span>}
                                 name="Answer"
                                 rules={[{ required: true, message: "Please enter the answer!" }]}
                             >
-                                <Input />
+                                <Input style={{ backgroundColor: "#1E1E1E", color: "#00FF7F" }} />
                             </Form.Item>
                             <Button
                                 type="text"
                                 icon={<PlusOutlined />}
                                 onClick={() => setShowDetail(!showDetail)}
+                                style={{ color: "#00FF7F" }}
                             >
-                                Hint <span style={{ color: "BLUE" }}>{showDetail && "อาจารย์ CYBER"}</span>
+                                Hint <span style={{ color: "white" }}>{showDetail && "ASCII"}</span>
                             </Button>
                             <Button
                                 type="text"
                                 icon={<InfoCircleOutlined />}
                                 onClick={() => setShowDetail2(!showDetail2)}
+                                style={{ color: "#00FF7F" }}
                             >
                                 Answer <span style={{ color: "green" }}>{showDetail2 && "CYBER SECURITY FUNDAMENTALS"}</span>
                                 {showDetail2 && (
                                     <Button
                                         type="text"
                                         icon={<CopyOutlined />}
-                                        style={{ color: "blue" }}  // Set color style for the Copy button
+                                        style={{ color: "white" }}
                                         onClick={() => handleCopy("CYBER SECURITY FUNDAMENTALS")}
                                     >
                                         Copy
@@ -124,7 +125,6 @@ function CiperCreate2() {
                             </Button>
                         </Col>
                     </Row>
-
                     <Row justify="end">
                         <Col style={{ marginTop: "40px" }}>
                             <Form.Item>
@@ -133,6 +133,7 @@ function CiperCreate2() {
                                         type="primary"
                                         htmlType="submit"
                                         icon={<PlusOutlined />}
+                                        style={{ backgroundColor: "#00AA55", borderColor: "#00FF7F" }}
                                     >
                                         Submit
                                     </Button>
@@ -146,4 +147,4 @@ function CiperCreate2() {
     );
 }
 
-export default CiperCreate2;
+export default CiperCreate3;

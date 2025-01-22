@@ -13,7 +13,7 @@ import {
 import { PlusOutlined, BulbOutlined } from "@ant-design/icons";
 import { AnswerInterface } from "../../../interfaces/IAnswer";
 import { CreateAnswer } from "../../../services/https";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import photo2 from "../../../assets/2.jpg";
 
@@ -55,25 +55,12 @@ function CiperCreate4() {
     }
   };
 
-  const toggleHint1 = () => {
-    setShowHint1((prev) => !prev);
-  };
-
-  const toggleHint2 = () => {
-    setShowHint2((prev) => !prev);
-  };
-  const toggleHint3 = () => {
-    setShowHint3((prev) => !prev);
-  };
-  const toggleHint4 = () => {
-    setShowHint4((prev) => !prev);
-  };
-  const toggleHint5 = () => {
-    setShowHint5((prev) => !prev);
-  };
-  const toggleHint6 = () => {
-    setShowHint6((prev) => !prev);
-  };
+  const toggleHint1 = () => setShowHint1((prev) => !prev);
+  const toggleHint2 = () => setShowHint2((prev) => !prev);
+  const toggleHint3 = () => setShowHint3((prev) => !prev);
+  const toggleHint4 = () => setShowHint4((prev) => !prev);
+  const toggleHint5 = () => setShowHint5((prev) => !prev);
+  const toggleHint6 = () => setShowHint6((prev) => !prev);
 
   const onSecondAnswerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const isCorrect = e.target.value === "DIGITECH";
@@ -109,11 +96,18 @@ qbVu0xdixOyRkQU4RrAKRqCoG615GUgjlUvzPa45kdR0BYryDiCMlg==`);
   };
 
   return (
-<div style={{ backgroundColor: "#C5D6BA", minHeight: "100vh", padding: "20px", color: "black" }}>
-  {contextHolder}
-  <Card style={{ backgroundColor: "#C5D6BA", color: "black" }}>
-    <h2>LEVEL 4!</h2>
-    <Divider style={{ borderColor: "black" }} />
+    <div
+      style={{
+        backgroundColor: "#0D1117",
+        minHeight: "100vh",
+        padding: "20px",
+        color: "#FFFFFF",
+      }}
+    >
+      {contextHolder}
+      <Card style={{ backgroundColor: "#0D1117", color: "#FFFFFF" }}>
+        <h2>LEVEL 4! Asymmetric Key</h2>
+        <Divider style={{ borderColor: "#FFFFFF" }} />
         <p>คำตอบก็อยู่สีฟ้าชั้นที่ 4</p>
         <Row align="middle" gutter={[16, 16]}>
           <Col>
@@ -126,24 +120,26 @@ qbVu0xdixOyRkQU4RrAKRqCoG615GUgjlUvzPa45kdR0BYryDiCMlg==`);
           <Col>
             <Space>
               <Button
-                // type="primary"
                 icon={<PlusOutlined />}
                 onClick={toggleHint1}
+                style={{ backgroundColor: "#00FF7F", borderColor: "black" }}
               >
                 Hint1
               </Button>
               {showHint1 && (
-                <span style={{ color: "blue", marginLeft: "8px" }}>georgeom</span>
+                <span style={{ color: "white", marginLeft: "8px" }}>georgeom</span>
               )}
               <Button
-                // type="primary"
                 icon={<BulbOutlined />}
                 onClick={toggleHint2}
+                style={{ backgroundColor: "#00FF7F", borderColor: "black" }}
               >
-                Answer
+                Answer1
               </Button>
               {showHint2 && (
-                <span style={{ color: "green", marginLeft: "8px" }}>TOO EASY MAK MAK</span>
+                <span style={{ color: "green", marginLeft: "8px" }}>
+                  TOO EASY MAK MAK
+                </span>
               )}
             </Space>
           </Col>
@@ -155,7 +151,7 @@ qbVu0xdixOyRkQU4RrAKRqCoG615GUgjlUvzPa45kdR0BYryDiCMlg==`);
             target="_blank"
             rel="noopener noreferrer"
           >
-            ลองจิ้มนี่ดูสิ
+            ล็อค
           </a>
         </p>
         <Form
@@ -166,36 +162,34 @@ qbVu0xdixOyRkQU4RrAKRqCoG615GUgjlUvzPa45kdR0BYryDiCMlg==`);
         >
           <Row gutter={[16, 0]} align="middle">
             <Col xs={24} sm={24} md={12}>
-              <Form.Item label="วงเวียน แพนกวิ้น คาเฟ่ (เมื่อตอบถูกแล้ว)">
-                <Input onChange={onSecondAnswerChange} />
-                {isSecondAnswerCorrect && (
-                  <Checkbox
-                    checked
-                    style={{ marginTop: "8px", color: "green" }}
-                  >
-                    Correct!
-                  </Checkbox>
-                )}
-              </Form.Item>
+            <Form.Item label={<span style={{ color: '#FFFFFF' }}>วงเวียน แพนกวิ้น คาเฟ่ (เมื่อตอบถูกแล้วให้ลองมองให้ลึกกว่านี้ดูสิ)</span>}>
+  <Input onChange={onSecondAnswerChange} style={{ backgroundColor: "#1E1E1E", color: "#00FF7F" }} />
+  {isSecondAnswerCorrect && (
+    <Checkbox checked style={{ marginTop: "8px", color: "#00FF7F" }}>
+      Correct!
+    </Checkbox>
+  )}
+</Form.Item>
+
             </Col>
             <Col xs="auto">
               <Space>
                 <Button
-                  // type="primary"
                   icon={<PlusOutlined />}
                   onClick={toggleHint3}
+                  style={{ backgroundColor: "#00FF7F", borderColor: "black" }}
                 >
                   Hint2
                 </Button>
                 {showHint3 && (
-                  <span style={{ color: "blue", marginLeft: "8px" }}> ตึกใหม่ </span>
+                  <span style={{ color: "white", marginLeft: "8px" }}> ตึกใหม่</span>
                 )}
                 <Button
-                  // type="primary"
                   icon={<BulbOutlined />}
                   onClick={toggleHint4}
+                  style={{ backgroundColor: "#00FF7F", borderColor: "black" }}
                 >
-                  Answer
+                  Answer2
                 </Button>
                 {showHint4 && (
                   <span style={{ color: "green", marginLeft: "8px" }}> DIGITECH</span>
@@ -208,37 +202,41 @@ qbVu0xdixOyRkQU4RrAKRqCoG615GUgjlUvzPa45kdR0BYryDiCMlg==`);
             <Col xs={24} sm={24} md={12}>
               <Row justify="center">
                 <Col span={24}>
-                  <Form.Item
-                    label="Answer"
-                    name="Answer"
-                    rules={[{ required: true, message: "Please enter the answer!" }]}
-                  >
-                    <Input />
-                  </Form.Item>
+                <Form.Item
+  label={<span style={{ color: '#FFFFFF' }}>Answer</span>}
+  name="Answer"
+  rules={[{ required: true, message: "Please enter the answer!" }]}>
+  <Input style={{ backgroundColor: "#1E1E1E", color: "#00FF7F" }} />
+</Form.Item>
+
                 </Col>
               </Row>
             </Col>
             <Col>
               <Space>
                 <Button
-                  // type="primary"
                   icon={<PlusOutlined />}
                   onClick={toggleHint5}
+                  style={{ backgroundColor: "#00FF7F", borderColor: "black" }}
                 >
                   Hint3
                 </Button>
                 {showHint5 && (
-                  <span style={{ color: "blue", marginLeft: "8px" }}>สายดำคณะคอม</span>
+                  <span style={{ color: "white", marginLeft: "8px" }}>
+                    สายดำคณะคอม
+                  </span>
                 )}
                 <Button
-                  // type="primary"
                   icon={<BulbOutlined />}
                   onClick={toggleHint6}
+                  style={{ backgroundColor: "#00FF7F", borderColor: "black" }}
                 >
                   Answer
                 </Button>
                 {showHint6 && (
-                  <span style={{ color: "green", marginLeft: "8px" }}>HACKERCPE27</span>
+                  <span style={{ color: "green", marginLeft: "8px" }}>
+                    HACKERCPE27
+                  </span>
                 )}
               </Space>
             </Col>
@@ -252,6 +250,7 @@ qbVu0xdixOyRkQU4RrAKRqCoG615GUgjlUvzPa45kdR0BYryDiCMlg==`);
                     type="primary"
                     htmlType="submit"
                     icon={<PlusOutlined />}
+                    style={{ backgroundColor: "#00AA55", borderColor: "#00FF7F" }}
                   >
                     Submit
                   </Button>
